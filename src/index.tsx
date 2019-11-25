@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 
 import { store } from './store'
-import Application from './containers/TODO';
+import Router from './router';
 
 ReactDOM.render(
     <Provider store={store}>
-        <Application />
+        <Router />
     </Provider>
 , document.getElementById('root'));

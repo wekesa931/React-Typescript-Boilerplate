@@ -7,6 +7,8 @@ export const allPosts = (state = postsReducerDefaultState, action: TodoActionTyp
     switch(action.type){
         case "GET_POSTS":
             return [...state, action.allPosts]
+        case "SINGLE_POST":
+            return [...state, action.singlePost]
         default:
             return state
     }

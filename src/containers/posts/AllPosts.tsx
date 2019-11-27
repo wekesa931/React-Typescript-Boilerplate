@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import { ThunkDispatch } from "redux-thunk";
 import { bindActionCreators } from "redux";
+import { withRouter } from 'react-router-dom';
+import { Spin } from 'antd';
+
 
 import { IPosts } from '../../types/Posts'
 import { AppActions } from '../../types/actions'
@@ -20,12 +23,20 @@ const AllPosts: React.SFC<Props> = (props) => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
-  
+
+  console.log('all props =========>',props.allPosts);
+
+  let screenView = <Spin size='large' />
+
+  if(props.allPosts.length > 0){
+    screenView = <PostsContainer 
+    posts={props.allPosts}
+    isLoading={false}
+  />
+  }
   return ( 
     <div>
-      <PostsContainer 
-        posts={props.allPosts}
-      />
+      {screenView}
     </div>
   );
 }
@@ -50,7 +61,8 @@ const mapDispatchToProps = (
   getPosts: bindActionCreators(getPosts, dispatch),
 });
  
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(AllPosts);
+)(AllPosts));
+

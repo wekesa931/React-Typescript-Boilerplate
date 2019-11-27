@@ -9,21 +9,6 @@ import { bindActionCreators } from "redux";
 
 type Props = LinkStateProps & LinkDispatchProps;
 
-// class Application extends React.Component<Props> {
-//   componentWillMount(){
-//     const { getTodos } = this.props
-//     getTodos()
-//   }
-//   render() { 
-//     console.log(this.props)
-//     return ( 
-//       <div>
-//         Yes!
-//       </div>
-//      );
-//   }
-// }
-
 const Application: React.SFC<Props> = (props) => {
 
   useEffect(() => {

@@ -16,3 +16,18 @@ export const getPosts = () => async (dispatch: Dispatch<AppActions>) => {
         // None
     }
 }
+
+export const getSinglePost = (id: number) => async (dispatch: Dispatch<AppActions>) => {
+    try {
+        const singlePost = await axios.get(
+            `https://jsonplaceholder.typicode.com/posts/${id}`
+        )
+        dispatch({
+            type: 'SINGLE_POST',
+            singlePost: singlePost.data
+        })
+    }
+    catch {
+        // None
+    }
+}

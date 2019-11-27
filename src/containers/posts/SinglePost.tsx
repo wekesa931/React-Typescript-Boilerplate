@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import { ThunkDispatch } from "redux-thunk";
 import { bindActionCreators } from "redux";
-import { Spin } from 'antd';
 import { RouteComponentProps } from 'react-router';
 
 import { IPosts } from '../../types/Posts'
 import { AppActions } from '../../types/actions'
 import { AppState } from '../../store'
 import { getSinglePost } from '../../actions/postsActions'
+import SinglePostItem from '../../components/posts/singlePost'
 
 type Props = LinkStateProps & LinkDispatchProps & RouteComponentProps;
 
@@ -22,28 +22,15 @@ const SinglePost: React.SFC<Props> = (props) => {
     getSinglePost(id)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
+  const { singlePost } = props
 
-  console.log('all props =========>',props.singlePost);
-
-  let screenView = <Spin size='large' />
-
-  if(props.singlePost.length > 0){
-    const article = props.singlePost[0]
-    screenView = <div>
-      <h3>{article.title}</h3>
-      <p>{article.body}</p>
-    </div>
-  }
-
-  return ( 
-    <div>
-      {screenView}
-    </div>
+  return (
+    <SinglePostItem singlePost={singlePost} />
   );
 }
 
 interface LinkStateProps {
-  singlePost: IPosts[];
+  singlePost: IPosts;
 }
 
 interface LinkDispatchProps {
@@ -52,7 +39,7 @@ interface LinkDispatchProps {
 
 const mapStateToProps = (state: AppState): LinkStateProps => {
   return {
-    singlePost: state.allPosts
+    singlePost: state.singlePost
   }
 }
 

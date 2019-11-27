@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
 import { allTodos } from "./todos";
-import { allPosts } from './postsReducers'
+import { allPosts, singlePost } from './postsReducers'
 
 export const rootReducer = combineReducers({
     allTodos,
-    allPosts
+    allPosts,
+    singlePost
   });

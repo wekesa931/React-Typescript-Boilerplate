@@ -24,9 +24,9 @@ const AllPosts: React.SFC<Props> = (props) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
-  console.log('all props =========>',props.allPosts);
-
-  let screenView = <Spin size='large' />
+  let screenView = <div style={{width: '100%', padding: '5% 50%'}}>
+      <Spin size='large' />
+    </div>
 
   if(props.allPosts.length > 0){
     screenView = <PostsContainer 
@@ -34,6 +34,7 @@ const AllPosts: React.SFC<Props> = (props) => {
     isLoading={false}
   />
   }
+
   return ( 
     <div>
       {screenView}

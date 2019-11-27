@@ -1,0 +1,15 @@
+.browserView {
+  text-align: right;
+  display: block;
+}
+.mobileView {
+  display: none;
+}
+@media only screen and (max-width: 500px) {
+  .mobileView {
+    display: block
+  }
+  .browserView {
+    display: none;
+  }
+}

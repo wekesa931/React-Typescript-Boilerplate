@@ -31,12 +31,16 @@ const Header = () => {
             </Link>
           </Menu.Item>
           <Menu.Item key="mail">
-            <Icon type="mail" />
-            My Posts
+            <Link to='/my-posts'>
+              <Icon type="mail" />{' '}
+              My Posts
+            </Link>
           </Menu.Item>
           <Menu.Item key="favorite">
-            <Icon type="like" />
-            Favorites
+            <Link to='/favorites'>
+              <Icon type="like" />{' '}
+              Favorite
+            </Link>
           </Menu.Item>
         </Menu>
       </div>
